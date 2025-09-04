@@ -1,70 +1,70 @@
-
-import React, { useEffect, useRef } from "react";
-import { ArrowRight } from "lucide-react";
+import React, { useState } from "react";
+import { toast } from "sonner";
 
 const CTA = () => {
-  const ctaRef = useRef<HTMLDivElement>(null);
-  
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("animate-fade-in");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-    
-    if (ctaRef.current) {
-      observer.observe(ctaRef.current);
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    company: ""
+  });
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData.fullName || !formData.email) {
+      toast.error("Please fill in all required fields");
+      return;
     }
-    
-    return () => {
-      if (ctaRef.current) {
-        observer.unobserve(ctaRef.current);
-      }
-    };
-  }, []);
-  
-  return (
-    <section className="py-12 sm:py-16 md:py-20 bg-white relative" id="get-access" ref={ctaRef}>
-      {/* Background gradient at the top has been removed */}
-      
-      <div className="section-container relative z-10 opacity-0 px-4 sm:px-6">
-        <div className="max-w-4xl mx-auto glass-card p-6 sm:p-8 md:p-10 lg:p-14 text-center overflow-hidden relative">
-          {/* Decorative circles */}
-          <div className="absolute top-0 right-0 w-32 sm:w-40 h-32 sm:h-40 bg-pulse-100/30 rounded-full translate-x-1/2 -translate-y-1/2 blur-2xl"></div>
-          <div className="absolute bottom-0 left-0 w-24 sm:w-32 h-24 sm:h-32 bg-gray-100/50 rounded-full -translate-x-1/2 translate-y-1/2 blur-2xl"></div>
-          
-          <div className="pulse-chip mx-auto mb-4 sm:mb-6">
-            <span>Limited Availability</span>
+    toast.success("Request submitted successfully!");
+    setFormData({
+      fullName: "",
+      email: "",
+      company: ""
+    });
+  };
+  return <section id="contact" className="bg-white py-0">
+      <div className="section-container opacity-0 animate-on-scroll">
+        <div className="w-full max-w-6xl mx-auto rounded-2xl sm:rounded-3xl overflow-hidden shadow-elegant">
+          <div className="relative h-48 sm:h-64 p-6 sm:p-8 flex flex-col items-start" style={{
+              backgroundImage: "url('/background-section1.png')",
+              backgroundSize: "cover",
+              backgroundPosition: "center"
+            }}>
+            <div className="inline-block px-4 sm:px-6 py-2 border border-white text-white rounded-full text-xs mb-4">
+              Contact
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-display text-white font-bold mt-auto">
+              See Clariti in action
+            </h2>
           </div>
-          
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6">
-            Be Among the First to <br className="hidden sm:inline" />
-            <span className="text-pulse-500">Experience Atlas</span>
-          </h2>
-          
-          <p className="text-base sm:text-lg text-gray-600 mb-6 sm:mb-8 max-w-2xl mx-auto">
-            We're accepting a limited number of early adopters. Submit your application today to secure your place in the future of robotics.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <a href="#contact" className="button-primary group flex items-center justify-center w-full sm:w-auto">
-              Request Early Access
-              <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </a>
-            <a href="#" className="button-secondary w-full sm:w-auto text-center">
-              Join Waitlist
-            </a>
+          <div className="bg-white p-4 sm:p-8" style={{
+              backgroundColor: "#FFFFFF",
+              border: "1px solid #ECECEC"
+            }}>
+            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+              <div>
+                <input type="text" name="fullName" value={formData.fullName} onChange={handleChange} placeholder="Full name" className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pulse-500 focus:border-transparent" required />
+              </div>
+              <div>
+                <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Email address" className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pulse-500 focus:border-transparent" required />
+              </div>
+              <div>
+                <input type="text" name="company" value={formData.company} onChange={handleChange} placeholder="Company" className="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pulse-500 focus:border-transparent" required />
+              </div>
+              <div>
+                <button type="submit" className="w-full px-6 py-3 bg-pulse-500 hover:bg-pulse-600 text-white font-medium rounded-full transition-colors duration-300">
+                  Request demo
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default CTA;

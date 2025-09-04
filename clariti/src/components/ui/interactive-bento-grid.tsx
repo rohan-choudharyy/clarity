@@ -158,12 +158,10 @@ const AnalyticsVisual: React.FC<VisualProps> = ({
   const secondaryDashoffset = circumference - (secondaryProgress / 100) * circumference
 
   const techItems = [
-    { id: 1, translateX: "120", translateY: "60", text: "React", icon: "⚛️" },
-    { id: 2, translateX: "120", translateY: "-60", text: "Next.js", icon: "🔷" },
-    { id: 3, translateX: "140", translateY: "0", text: "TypeScript", icon: "📘" },
-    { id: 4, translateX: "-140", translateY: "0", text: "Tailwind", icon: "💨" },
-    { id: 5, translateX: "-120", translateY: "60", text: "Prisma", icon: "🔺" },
-    { id: 6, translateX: "-120", translateY: "-60", text: "GraphQL", icon: "🌸" },
+    { id: 1, translateX: "120", translateY: "60", text: "Optimize", icon: "⚛️" },
+    { id: 2, translateX: "120", translateY: "-60", text: "Activate", icon: "🔷" },
+    { id: 5, translateX: "-120", translateY: "60", text: "Measure", icon: "🔺" },
+    { id: 6, translateX: "-120", translateY: "-60", text: "Plan", icon: "🌸" },
   ]
 
   return (
@@ -647,23 +645,23 @@ export default function InteractiveCards() {
   const cards = [
     {
       visual: <AnalyticsVisual />,
-      title: "Analytics Dashboard",
-      description: "Interactive data visualization with real-time progress tracking and technology stack overview."
+      title: "Comprehensive Analytics",
+      description: "Gain real-time performance tracking and comprehensive reporting across all your retail media investments."
     },
     {
       visual: <WaveVisual />,
-      title: "Wave Dynamics",
-      description: "Fluid wave animations with floating particles that respond to user interaction."
+      title: "Measurable Performance Insights",
+      description: "Dive deep into SKU-level insights and proven ROAS."
     },
     {
       visual: <GeometricVisual />,
-      title: "Geometric Morphing",
-      description: "Shape transformation animations with rotating elements and geometric patterns."
+      title: "Agile Campaign Activation",
+      description: "Streamlined trafficking and dynamic content delivery across RMNs."
     },
     {
       visual: <NetworkVisual />,
-      title: "Network Graph",
-      description: "Dynamic network visualization showing connected nodes with interactive animations."
+      title: "Unified Retail Media Graph",
+      description: "Consolidate all your retail media campaigns into a single, intuitive view for unparalleled clarity and control."
     }
   ]
 

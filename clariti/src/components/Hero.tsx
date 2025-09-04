@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { ArrowRight } from "lucide-react";
@@ -86,6 +85,29 @@ const Hero = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isMobile]);
   
+  function SplitText({ text }: { text: string }) {
+    return (
+      <span className="inline-block">
+        {text.split(" ").map((word, i) => (
+          <span key={i} className="inline-block mr-2">
+            {word.split("").map((char, j) => (
+              <span
+                key={j}
+                className="inline-block opacity-0 animate-fade-in"
+                style={{
+                  animationDelay: `${0.1 * (i * 8 + j)}s`,
+                  animationDuration: "0.5s"
+                }}
+              >
+                {char}
+              </span>
+            ))}
+          </span>
+        ))}
+      </span>
+    );
+  }
+  
   return (
     <section 
       className="overflow-hidden relative bg-cover" 
@@ -113,7 +135,7 @@ const Hero = () => {
               className="section-title text-3xl sm:text-4xl lg:text-5xl xl:text-6xl leading-tight opacity-0 animate-fade-in" 
               style={{ animationDelay: "0.3s" }}
             >
-              Clarity for Retail<br className="hidden sm:inline" />Media Performance.
+              <SplitText text="Clarity for Retail Media Performance." />
             </h1>
             
             <p 
@@ -128,7 +150,7 @@ const Hero = () => {
               style={{ animationDelay: "0.7s" }}
             >
               <a 
-                href="#demo" 
+                href="#cta" 
                 className="flex items-center justify-center group w-full sm:w-auto text-center mr-4" 
                 style={{
                   backgroundColor: '#FE5C02',

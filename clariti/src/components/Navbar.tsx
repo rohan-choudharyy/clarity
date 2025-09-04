@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
@@ -63,26 +62,16 @@ const Navbar = () => {
 
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex space-x-6 xl:space-x-8">
-          <a 
-            href="/" 
-            className="nav-link"
-          >
-            Home
-          </a>
-          <a href="/solutions" className="nav-link">Solutions</a>
-          <a href="/product" className="nav-link">Product</a>
-          <a href="/services" className="nav-link">Services</a>
-          <a href="/case-studies" className="nav-link">Case Studies</a>
-          <a href="/blog" className="nav-link">Blog</a>
-          <a href="/about" className="nav-link">About</a>
-          <a href="/careers" className="nav-link">Careers</a>
-          <a href="/contact" className="nav-link">Contact</a>
+          <a href="#why" className="nav-link">Why Us?</a>
+          <a href="#features" className="nav-link">Features</a>
+          <a href="#testimonials" className="nav-link">Testimonials</a>
+          <a href="/blogs" className="nav-link" target="_blank" rel="noopener noreferrer">Blogs</a>
+          <a href="/careers" className="nav-link" target="_blank" rel="noopener noreferrer">Careers</a>
         </nav>
-
         {/* CTA Button */}
         <div className="hidden lg:block">
           <a 
-            href="#demo" 
+            href="#cta" 
             className="inline-flex items-center justify-center" 
             style={{
               backgroundColor: '#FE5C02',
@@ -100,7 +89,6 @@ const Navbar = () => {
             Book a Demo
           </a>
         </div>
-
         {/* Mobile menu button - increased touch target */}
         <button 
           className="lg:hidden text-gray-700 p-3 focus:outline-none" 
@@ -117,66 +105,15 @@ const Navbar = () => {
         isMenuOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-full pointer-events-none"
       )}>
         <nav className="flex flex-col space-y-4 items-center mt-8">
-          <a 
-            href="/" 
-            className="text-lg font-medium py-2 px-4 w-full text-center rounded-lg hover:bg-gray-100" 
-            onClick={() => {
-              setIsMenuOpen(false);
-              document.body.style.overflow = '';
-            }}
-          >
-            Home
-          </a>
-          <a 
-            href="/solutions" 
-            className="text-lg font-medium py-2 px-4 w-full text-center rounded-lg hover:bg-gray-100" 
-            onClick={() => {
-              setIsMenuOpen(false);
-              document.body.style.overflow = '';
-            }}
-          >
-            Solutions
-          </a>
-          <a 
-            href="/product" 
-            className="text-lg font-medium py-2 px-4 w-full text-center rounded-lg hover:bg-gray-100" 
-            onClick={() => {
-              setIsMenuOpen(false);
-              document.body.style.overflow = '';
-            }}
-          >
-            Product
-          </a>
-          <a 
-            href="/services" 
-            className="text-lg font-medium py-2 px-4 w-full text-center rounded-lg hover:bg-gray-100" 
-            onClick={() => {
-              setIsMenuOpen(false);
-              document.body.style.overflow = '';
-            }}
-          >
-            Services
-          </a>
-          <a 
-            href="/case-studies" 
-            className="text-lg font-medium py-2 px-4 w-full text-center rounded-lg hover:bg-gray-100" 
-            onClick={() => {
-              setIsMenuOpen(false);
-              document.body.style.overflow = '';
-            }}
-          >
-            Case Studies
-          </a>
-          <a 
-            href="/contact" 
-            className="text-lg font-medium py-2 px-4 w-full text-center rounded-lg hover:bg-gray-100" 
-            onClick={() => {
-              setIsMenuOpen(false);
-              document.body.style.overflow = '';
-            }}
-          >
-            Contact
-          </a>
+          <a href="#hero" className="text-lg font-medium py-2 px-4 w-full text-center rounded-lg hover:bg-gray-100" onClick={() => { setIsMenuOpen(false); document.body.style.overflow = ''; }}>Home</a>
+          <a href="#humanoid" className="text-lg font-medium py-2 px-4 w-full text-center rounded-lg hover:bg-gray-100" onClick={() => { setIsMenuOpen(false); document.body.style.overflow = ''; }}>Humanoid</a>
+          <a href="#specs" className="text-lg font-medium py-2 px-4 w-full text-center rounded-lg hover:bg-gray-100" onClick={() => { setIsMenuOpen(false); document.body.style.overflow = ''; }}>Specs</a>
+          <a href="#details" className="text-lg font-medium py-2 px-4 w-full text-center rounded-lg hover:bg-gray-100" onClick={() => { setIsMenuOpen(false); document.body.style.overflow = ''; }}>Details</a>
+          <a href="#showcase" className="text-lg font-medium py-2 px-4 w-full text-center rounded-lg hover:bg-gray-100" onClick={() => { setIsMenuOpen(false); document.body.style.overflow = ''; }}>Showcase</a>
+          <a href="#features" className="text-lg font-medium py-2 px-4 w-full text-center rounded-lg hover:bg-gray-100" onClick={() => { setIsMenuOpen(false); document.body.style.overflow = ''; }}>Features</a>
+          <a href="#testimonials" className="text-lg font-medium py-2 px-4 w-full text-center rounded-lg hover:bg-gray-100" onClick={() => { setIsMenuOpen(false); document.body.style.overflow = ''; }}>Testimonials</a>
+          <a href="#newsletter" className="text-lg font-medium py-2 px-4 w-full text-center rounded-lg hover:bg-gray-100" onClick={() => { setIsMenuOpen(false); document.body.style.overflow = ''; }}>Newsletter</a>
+          <a href="#made-by-humans" className="text-lg font-medium py-2 px-4 w-full text-center rounded-lg hover:bg-gray-100" onClick={() => { setIsMenuOpen(false); document.body.style.overflow = ''; }}>Made By Humans</a>
           <div className="mt-4">
             <a 
               href="#demo" 
@@ -193,10 +130,7 @@ const Navbar = () => {
                 border: '1px solid white',
                 fontWeight: '500',
               }}
-              onClick={() => {
-                setIsMenuOpen(false);
-                document.body.style.overflow = '';
-              }}
+              onClick={() => { setIsMenuOpen(false); document.body.style.overflow = ''; }}
             >
               Book a Demo
             </a>
